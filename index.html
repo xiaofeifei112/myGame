@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="referrer" content="always">
+    <meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+    <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="0" http-equiv="expires">
+    <meta name="referrer" content="always">
+    <meta content="telephone=no, address=no" name="format-detection">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- apple devices fullscreen -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>Document</title>
+    <!-- 公共样式 -->
+    <link rel="stylesheet" href="./css/base.min.css">
+    <link rel="stylesheet" href="./css/bpb.min.css">
+    <link rel="stylesheet" href="./css/weui.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+
+    <!-- rem -->
+    <script src="./js/rem.js"></script>
+
+    <!-- 微信公众号 -->
+    <script src="./js/jweixin-1.2.0.js"></script>
+
+    <!-- jquery -->
+    <script src="./js/jquery-core.min.js"></script>
+    <script src="./js/jquery.touchSwipe.min.js"></script>
+    <!-- 动画引擎 -->
+    <script src="./js/lufylegend_simplify.min.js"></script>
+
+
+
+</head>
+
+<body class="gameTpl_-1">
+
+    <!-- 活动公告 -->
+    <div class="unPublish">活动尚未发布，当前仅供预览</div>
+
+    <!-- 加载动画 -->
+    <div id="preloadPage" class="bg leftClose" style="">
+
+        <div class="spinner">
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+        </div>
+
+        <div class="info"><span id="loadPercent">100</span>%</div>
+    </div>
+
+    <!-- 游戏首页 -->
+    <div class="body">
+
+        <!-- 首页菜单 -->
+        <div class="home regPage">
+            <div id="homeBgBox">
+                <img id="homeBg" src="./img/home_bg.gif">
+            </div>
+            <div class="gameInfoBox">
+                <div class="titleImg imgContainer absCenter titleDown">
+                    <img id="titleImg" class="slaveImg abs" src="./img/eludeDog.png" style="width:15.8rem;height:8.8rem;top:0.15rem;left:0.1rem;">
+                </div>
+            </div>
+
+
+            <div id="joinNumLine" class="joinNumLine absCenter" style="top:19.65rem;left:3.2rem;color:rgb(226, 66, 44);font-size:0.7rem; text-shadow:rgb(255, 255, 255) -1px -1px 0px, rgb(255, 255, 255) 0px -1px 0px, rgb(255, 255, 255) 1px -1px 0px, rgb(255, 255, 255) 1px 0px 0px, rgb(255, 255, 255) 1px 1px 0px, rgb(255, 255, 255) 0px 1px 0px, rgb(255, 255, 255) -1px 1px 0px, rgb(255, 255, 255) -1px 0px 0px;">
+                已有 <span id="joinNum" class="specil" style="color:rgb(226, 66, 44);font-size:0.8rem;text-shadow:rgb(255, 255, 255) -1px -1px 0px, rgb(255, 255, 255) 0px -1px 0px, rgb(255, 255, 255) 1px -1px 0px, rgb(255, 255, 255) 1px 0px 0px, rgb(255, 255, 255) 1px 1px 0px, rgb(255, 255, 255) 0px 1px 0px, rgb(255, 255, 255) -1px 1px 0px, rgb(255, 255, 255) -1px 0px 0px;">1</span>
+                人参加活动</div>
+
+
+            <div id="playInfo" class="abs editTarget-playInfo hide" style="width: 9rem; text-align: center; top: 22rem; left: 3.5rem; font-size: 0.7rem; color: rgb(255, 255, 255);">
+                <div class="dayPlayHint">您今天还有 <span id="count" class="specil todayPlayCount" style="font-size: 0.7rem; color: rgb(255, 247, 153);">5</span>
+                    次参与机会</div>
+                <div class="totalPlayHint" style="display: none;">您还有 <span class="totalPlayCount specil" style="font-size: 0.7rem; color: rgb(255, 247, 153);">100</span>
+                    次参与机会</div>
+                <div class="dayPlayHint4Total" style="display: none;">今天有 <span class="count specil todayPlayCount" style="font-size: 0.7rem; color: rgb(255, 247, 153);">5</span>
+                    次</div>
+            </div>
+            <div id="startBtn" class="startBtn imgContainer absCenter" style="top:0rem;">
+                <img id="startBtnImg" class="slaveImg abs startTada" src="./img/btnGo.png" style="width:9rem;height:3.3rem;top:20.7rem;left:3.2rem;">
+            </div>
+            <div class="bottomSkill skillInfo">页面技术由 前端与移动开发教研部 提供</div>
+        </div>
+
+
+        <!-- 活动胶囊 -->
+
+        <div class="ruleImg imgContainer absCenter share_assembly share_assembly_home" _mousein="0" onclick="showRule(isAnimation=false);">
+            <div id="ruleImg" class="slaveImg abs notNeedFatherChage outSpecialDivAutoFit hd-img-fillDiv ruleImgAnimate" style="width: 3rem; height: 3rem; top: 0.1rem; left: 12.6rem; background-size: 100% 100%; background-image: url(&quot;http://7020498.h40.faiusr.com/4/333/ACgIABAEGAAgtp2YzgUo7vXikgMweDh4.png&quot;);"
+                _src="./img/silk_bag.png"></div>
+        </div>
+
+        <!-- 活动锦囊 提示  奖品 排名 -->
+        <!-- enlarge -->
+        <div id="poupInfoBox" class="regPage " style="transform-origin: 370.585px 46.6477px 0px; display: block;">
+            <!-- 头部 -->
+            <div class="poupHead">
+                <div class="poupTitleBox">
+                    <div id="actionExpBtn" class="poupTitleMune checked" _flag="2" style="width: 4.41667rem;">
+                        <div class="item">活动说明</div>
+                    </div>
+
+                    <div id="ranBtn" class="poupTitleMune" _flag="1" style="width: 4.41667rem;">
+                        <div class="item">排行榜</div>
+                    </div>
+
+                    <div id="prizeBtn" class="poupTitleMune" _flag="3" style="width: 4.41667rem;">
+                        <div class="item">我的奖品<span id="Award_Round_Dot" class="redDot hide"></span></div>
+                    </div>
+                    <div id="winnerBtn" class="poupTitleMune hide" _flag="4" style="width: 4.41667rem;">
+                        <div class="item">获奖名单</div>
+                    </div>
+                    <div class="poupSlideBar">
+                        <div class="slideBarTip transitionPanel" style="width: 4.41667rem; left: 0.8rem;"></div>
+                    </div>
+                </div>
+                <div class="poupClose"></div>
+                <div style="clear:both; height:0"></div>
+            </div>
+            <!-- 内容 -->
+            <div id="popTabBox" class="popTabBox transitionPanel" style="left: 0px; width: 1242px;">
+
+                <!-- 活动说明  -->
+
+                <div id="ruleBox" class="poupMain" _flag="2" style="width: 33.3333%; height: 645.731px;">
+                    <div class="poupMainInfo" style="height: 576px;">
+                        <!--<div id="" style="font-size: 0.6rem; position: relative;" class="noMove">投诉</div>-->
+                        <div id="awardLine" class="poupLine" data-sortkey="a">
+                            <div class="mainTitle">活动奖品</div>
+                            <div id="awardLineBox">
+                                <div class="unComfortLine awardItem "><span class="awardStyle">一等奖</span> : <span class="award">10元优惠券</span></div>
+                                <div class="unComfortLine awardItem "><span class="awardStyle">二等奖</span> : <span class="award">价值50元礼品</span></div>
+                                <div class="unComfortLine awardItem "><span class="awardStyle">三等奖</span> : <span class="award">价值10元礼品</span></div>
+                                <div class="unComfortLine awardItem hide"><span class="awardStyle">四等奖</span> : <span class="award">价值5元小礼品</span></div>
+                                <div class="unComfortLine awardItem hide"><span class="awardStyle">五等奖</span> : <span class="award">价值5元小礼品</span></div>
+                                <div class="unComfortLine awardItem hide"><span class="awardStyle">六等奖</span> : <span class="award">价值5元小礼品</span></div>
+                                <div class="unComfortLine awardItem hide"><span class="awardStyle">七等奖</span> : <span class="award">价值5元小礼品</span></div>
+                                <div class="unComfortLine awardItem hide"><span class="awardStyle">八等奖</span> : <span class="award">价值5元小礼品</span></div>
+                                <div class="awardItem anwei hide"><span class="awardStyle">安慰奖</span> : <span class="award">价值5元小礼品</span></div>
+
+                            </div>
+                            <div id="selfAwardLine" class="hide" style="word-wrap: break-word; display: none;"></div>
+                        </div>
+                        <div id="gameDateTime" class="poupLine" data-sortkey="b">
+                            <div class="mainTitle">活动时间</div>
+                            <p><span id="startDate">2018年8月10日 11:27</span>&nbsp;-&nbsp;<span id="endDate">2018年8月17日 11:27</span></p>
+                        </div>
+                        <div class="hostLine poupLine" data-sortkey="c">
+                            <div class="mainTitle">主办单位</div>
+                            <p><a class="hostName" href="javascript:;" style="text-decoration: none;">-</a></p>
+                        </div>
+                        <div id="skillLine" class="skillLine poupLine" data-sortkey="d">
+                            <div class="skillCont">
+                                <div class="mainTitle">技术支持</div>
+
+                                <p>页面技术由 前端与移动开发教研部 提供，技术支持方仅提供页面技术，不承担由活动引起的相关法律责任
+                                </p>
+                            </div>
+                        </div>
+                        <div id="explainBox" class="poupLine" data-sortkey="e">
+                            <div class="mainTitle">活动说明</div>
+
+                            <p id="explaiDrawInfoBox" class="">
+                                <span id="haveScore">达到 <span id="scoreLimit" class="scoreLimit">300</span><span class="gameScoreUnit">分</span><span
+                                        id="exlainDrawFont">即可获得抽奖机会，</span></span>
+
+                                <span id="directDrawInfoBox" class="">
+                                    <span class="drawTotalFont" style="display: none;">活动期间总抽奖机会共 <span id="totalDrawTimeLimit">6</span>
+                                        次，1天只能抽</span><span class="everyOneFont hide" style="display: inline;">每人<span class="dayFont">每日</span>有</span>
+                                    <span id="drawTimesLimit">3</span>
+                                    次<span class="chanceFont hide" style="display: inline;">抽奖机会</span>。<br>
+                                </span>
+
+                            </p>
+
+                            <p id="explainPlayInfoBox" class="hide" style="display: none;">
+
+                                <span id="rankPlayInfoBox">
+                                    <span class="playTotalFont" style="display: none;">活动期间总参与机会共 <span class="playTotalLimit">10</span>
+                                        次，1天只能参与</span><span class="everyOneFont hide">每人<span class="dayFont">每日</span>有</span>
+                                    <span class="playTimesLimitShow">5</span>
+                                    次<span class="chanceFont hide">参与机会</span>。<br>
+                                </span>
+
+                            </p>
+                            <div id="exlainInfo">通过上下左右4个方向的滑动控制单身狗奔跑，吃到狗粮和徽章时加分。注意要躲过情侣。<br>
+                            </div>
+                        </div>
+                        <div id="informLine" class="noMove">
+                            <div id="newInformBtn" ontouchend="HdGame.changePoup(5,'',true);" class="noMove">投诉</div>
+                        </div>
+                    </div>
+
+                    <!-- 一个关闭的按钮 -->
+                    <!-- <div class="attentionBox">
+                        <div class="hdskillInfo skillInfo theRunningAdClass"><a class="theSpecialTarget" href="http://mp.weixin.qq.com/s?__biz=MjM5MTk5MjI3OA==&amp;mid=209854000&amp;idx=1&amp;sn=82241d924839270d3ea820ad2d56c01b#rd">我也要创建七夕活动</a><span
+                                class="gotoFlag"><i></i></span></div>
+                        <div class="holdBox"></div>
+                    </div> -->
+
+
+                </div>
+                <!-- 活动排名 -->
+                <div id="rankBox" class="poupMain" _flag="1" style="width: 33.3333%; height: 645.731px;">
+                    <div class="poupMainInfo">
+                        <div id="noRank" class="">暂无排名</div>
+                        <div id="rankMain" class="getRankHeight hide">
+                            <div style="margin-top:0.7rem;margin-left: 0.25rem;">当前排名：<span id="rank"></span> （只显示前<span
+                                    id="showRankNum">100</span>名）</div>
+                            <div style="padding:0rem 0.5rem">
+                                <table class="rankTable" cellspacing="0" cellpadding="0">
+                                    <thead>
+                                        <tr style="line-height: 1rem;">
+                                            <th>排行</th>
+                                            <th>头像</th>
+                                            <th>昵称</th>
+                                            <th>成绩</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="rankHeight">
+                            <table id="rankInfoBox" class="rankTable" cellspacing="0" cellpadding="0" style="margin-top: 0;"></table>
+                        </div>
+                    </div>
+                    <div class="attentionBox">
+                        <div class="hdskillInfo skillInfo theRunningAdClass"><a class="theSpecialTarget" href="http://mp.weixin.qq.com/s?__biz=MjM5MTk5MjI3OA==&amp;mid=209854000&amp;idx=1&amp;sn=82241d924839270d3ea820ad2d56c01b#rd">我也要创建七夕活动</a><span
+                                class="gotoFlag"><i></i></span></div>
+                        <div class="holdBox"></div>
+                    </div>
+                </div>
+                <!-- 我的奖品 -->
+                <div id="awardBox" class="poupMain" _flag="3" style="height: 645.731px; width: 33.3333%;">
+                    <div id="awardInfoBox">
+                        <div id="awardInfo">
+                            <div style="line-height: 2.6rem">暂无中奖记录</div>
+                        </div>
+
+                        <div id="awardContactInfo" class="hide">
+                            <div class="titleLine"><span class="title">联系信息</span></div>
+                            <div class="contactGroup">
+                                <div class="contactItem contactName hide">姓名： <span>monica</span></div>
+                                <div class="contactItem contactPhone hide">电话： <span>13200000000</span></div>
+
+                                <div class="contactItem contactAddress hide">地址： <span>广东省广州市海...</span></div>
+
+                            </div>
+                            <div class="updateBtn abs">修改</div>
+                        </div>
+                    </div>
+                    <div class="attentionBox">
+                        <div class="menuBtnBox">
+                            <a class="menuName">关注我们</a>
+                        </div>
+                        <div class="hdskillInfo skillInfo theRunningAdClass"><a class="theSpecialTarget" href="http://mp.weixin.qq.com/s?__biz=MjM5MTk5MjI3OA==&amp;mid=209854000&amp;idx=1&amp;sn=82241d924839270d3ea820ad2d56c01b#rd">我也要创建七夕活动</a><span
+                                class="gotoFlag"><i></i></span></div>
+                        <div class="holdBox"></div>
+                    </div>
+                </div>
+
+                <!-- 前三名奖品 -->
+                <div id="regAwardBox" class="poupMain" _flag="4" style="width: 33.3333%; display: none; height: 645.731px;">
+                    <div class="poupMainInfo">
+                        <div id="noRegAward" class="hide" style="margin-left:3px;">尚未公布获奖名单，详情请查看活动说明</div>
+                        <div id="regAwardMain" style="display:none;">
+
+                            <div class="regAwardList">
+                                <div class="mainTitle">一等奖</div>
+                                <div class="playerName" style="margin-bottom:12px;"></div>
+                            </div>
+
+                            <div class="regAwardList">
+                                <div class="mainTitle">二等奖</div>
+                                <div class="playerName" style="margin-bottom:12px;"></div>
+                            </div>
+
+                            <div class="regAwardList">
+                                <div class="mainTitle">三等奖</div>
+                                <div class="playerName" style="margin-bottom:12px;"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="attentionBox">
+                        <div class="hdskillInfo skillInfo theRunningAdClass"><a class="theSpecialTarget" href="http://mp.weixin.qq.com/s?__biz=MjM5MTk5MjI3OA==&amp;mid=209854000&amp;idx=1&amp;sn=82241d924839270d3ea820ad2d56c01b#rd">我也要创建七夕活动</a><span
+                                class="gotoFlag"><i></i></span></div>
+                        <div class="holdBox"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 警告框 -->
+        <div class="weui-dialog" style="display:none">
+            <div class="weui-dialog__bd"><span id="statusTip-msg">网络无法连接，请检查网络</span><br><span id="sTime" style="display: inline;"></span></div>
+            <div class="weui-dialog__ft"><a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">关闭</a></div>
+        </div>
+
+
+    </div>
+
+    <!-- 加载页面进度条 -->
+    <div class="ajaxLoadBg" style="display: node;">
+        <div class="ajaxLoadBar  ajaxLoad"></div>
+    </div>
+
+    <!-- 数据加载 -->
+    <div id="loadingToast" class="" style='display: none'>
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p class="weui-toast__content">数据加载中</p>
+        </div>
+    </div>
+
+    <!-- 游戏页面 -->
+    <div class="game gameBox">
+        <!-- 游戏背景 -->
+        <div id="gameBgBox">
+            <img id="gameBg" src="./img/game_bg.jpg" style="width:100%;height:auto;">
+        </div>
+
+        <!-- 游戏中间部分 -->
+        <div class="game_body">
+            <!-- 头部数据 -->
+            <div id="gameTopBar" class="gameTopBar" style="color:rgb(255, 255, 255);background-color:rgba(255, 255, 255, 0)">
+                <div class="userInfoBox">
+                    <div class="userImgBox" style="border-color:rgba(255, 255, 255, 0.298039)"><img src="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqtStbiaKyyZQlDKicr2Pe4hAN2Eyho14vd1FVrpn0BZQjGFJ3k9QKic2P2TSeHS8X8qiaM25tJ357yjg/132"
+                            class="userImg"></div>
+
+                    <div id="grade" class="grade">0</div>
+
+                </div>
+                <div class="timeBox">
+                    时间<br><span class="time">30.00</span>
+                </div>
+            </div>
+            <!-- 游戏部分 -->
+            <div class="gameLayerBox">
+                <!-- 背景石头 -->
+                <div class="stone" id="stoneGame">
+                    <ul class="stoneImg">
+                        <li>
+                            <img src="./img/stone.png" alt="">
+                        </li>
+                    </ul>
+
+                    <ul class="user">
+                        <li class="top_user">
+                            <img src="./img/topUser.png" alt="">
+                        </li>
+                        <li class="left_suer">
+                            <img src="./img/leftUser.png" alt="">
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 小狗 -->
+                <div class="gameDog" data-index='2'>
+                    <img src="./img/dog_left.png" alt="" data-index='1' ;>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+    </div>
+
+</body>
+
+<!-- 加载工具 -->
+<script src="./js/config.js"></script>
+<!-- 主文件 -->
+<script src="./js/index.js"></script>
+
+</html>
