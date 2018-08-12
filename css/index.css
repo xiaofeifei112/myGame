@@ -1,5 +1,6 @@
 html,body{
     overflow: hidden;
+    /* -webkit-overflow-scrolling: none; */
 }
 * { touch-action: none; }
 /* 游戏内部盒子 */
@@ -89,24 +90,16 @@ html,body{
 .user li:nth-child(2){
     display: none;
 }
-.user li.left_suer{
-    width:80%;
-    position: absolute;
-    bottom:0;
-    left:50%;
-    transform: translate(-50%,0);
-    transition: all 5s;
-    transform: scale(1)
-}
+
 .user li.top_user.animer{
     transform: scale(.3);
-    left:27%;
-    bottom:70%;
+    left:32%;
+    bottom:85%;
 }
 .user li.top_user.num1{
     width:30%;
     position: absolute;
-    bottom:0;
+    bottom:-25%;
     left:38%;
     transition: all 5s;
     transform: scale(1)
@@ -114,22 +107,82 @@ html,body{
 .user li.top_user.animer.num1{
     transform: scale(.3);
     left:35%;
-    bottom:70%;
+    bottom:85%;
 }
 .user li.top_user.num2{
     width:30%;
     position: absolute;
-    bottom:0;
-    left:73%;
+    bottom:-25%;
+    left:76%;
     transition: all 5s;
     transform: scale(1)
 }
 .user li.top_user.animer.num2{
-    transform: scale(.3);
-    left:44%;
-    bottom:70%;
+    transform: scale(.2);
+    left:40%;
+    bottom:85%;
+}
+.user li.left_user{
+    width:80%;
+    position: absolute;
+    bottom:0;
+    left:50%;
+    transform: translate(-50%,0) scale(1);
+    transition: all 5s;
 }
 .user li.left_user.animer{
-    transform: scale(.4);
-    bottom:70%;
+    transform: translate(-50%,0) scale(.2)  ;
+    bottom:90%;
+}
+
+/* 奖励 */
+.user .gold , .user .gold_brick{
+    position: absolute;
+    width:30%;
+    bottom:-20%;
+    transition: all 5s;
+    transform: scale(1.6)
+}
+.user .gold:nth-child(3),.user .gold_brick:nth-child(4){
+    display: none;
+}
+.user .gold.num1,.user .gold_brick.num1{
+    left:-12%;
+}
+.user .gold.num2,.user .gold_brick.num2{
+    left:33%;
+}
+.user .gold.num3,.user .gold_brick.num3{
+    left:84%;
+}
+.user .gold.num1.animer,.user .gold_brick.num1.animer{
+    bottom:89%;
+    transform: scale(.2);
+    left:31%;
+}
+.user .gold.num2.animer,.user .gold_brick.num2.animer{
+    bottom:89%;
+    transform: scale(.2);
+    left:35%
+}
+.user .gold.num3.animer,.user .gold_brick.num3.animer{
+    bottom:89%;
+    transform: scale(.2);
+    left:38%;
+}
+/* .user .gold_brick{
+    position: absolute;
+    width:20%;
+} */
+
+/* 显示小狗红字 */
+.dogHint{
+    position: absolute;
+    bottom:0;
+    left:-40%;
+    font-size: 28px;
+    color:rgb(0, 255, 0)
+}
+.dogHint:nth-child(2){
+    display: none;
 }
