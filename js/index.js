@@ -5,9 +5,10 @@
     window.onload = function () {
         // 背景石头移动
         !function shitou(w) {
-            w.openGameFl = false;
+
             // 打开游戏
             w.openGame = function () {
+                w.openGameFl = false;
                 // 调用时间
                 call()
 
@@ -25,6 +26,9 @@
                 $('.game').show();
                 dogTop = $('.gameDog').css('top').split('px')[0] * 1;
                 // this.console.log(dogTop)
+
+                // 清空分数
+                $('#grade').html('0')
             }
             var gameDogImg = $('.gameDog img')
             var windwoWidth = document.body.clientWidth;
@@ -65,7 +69,7 @@
 
             // dogMovement(gameDogImg)
             function dogMovement(dom) {
-
+                clearInterval(dom.time)
 
                 dom.time = setInterval(function () {
                     if (w.openGameFl) clearInterval(dom.time)
@@ -77,7 +81,6 @@
                         $('.gameDog img').attr('data-index', 1);
                         $('.gameDog img').attr('src', './img/dog_left.png')
                     }
-
 
                 }, 200)
             }
@@ -92,10 +95,10 @@
                     $('.gameDog').attr('data-top', 1)
                     $('.gameDog').animate({
                         top: '14.8%'
-                    }, 500, function () {
+                    }, 400, function () {
                         $('.gameDog').animate({
                             top: '21%'
-                        }, 500, function () {
+                        }, 400, function () {
                             $('.gameDog').attr('data-top', 0)
                             $('.gameDog img').attr('src', './img/dog_right.png')
                             clearInterval(gameDogImg.time)
@@ -431,8 +434,8 @@
             openGame();
         })
         // 点击再来一次
-        $('.resule-button').on('click', function () {
-            $('.body').show();
+        $('.rresule-status-again').on('click', function () {
+            $('.resuleBox').hide();
             openGame();
         })
         // 点击查看排行榜
@@ -440,6 +443,7 @@
 
         })
 
+        // 查看提示栏
         $('.poupTitleBox').on('click', '.poupTitleMune', function () {
             // $('.poupTitleBox .poupTitleMune').removeClass('checked');
             let left = $(this).attr('_flag');
@@ -448,13 +452,19 @@
             else left = '9.633rem', $('#popTabBox').css('left', '-828px')
             $('.slideBarTip').css('left', left)
         })
-
+        // 查看排名
         $('#resule_seeRank_show').on('click', function () {
             showRule(1);
             $('#popTabBox').css('left', '-414px');
             $('.slideBarTip').css('left', '5.21667rem')
         })
 
+        // 点击放回首页
+        $('.resule-status-home').on('click',function(){
+            $('.resuleBox').hide();
+            $('.body').show();
+            $('.game').hide();
+        })
         // openGameFl = true
 
     }
