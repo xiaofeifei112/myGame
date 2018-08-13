@@ -1,17 +1,37 @@
 (function () {
     $('.unPublish').hide();
-    $('.body').hide();
+    // $('.body').hide();
 
     window.onload = function () {
         // 背景石头移动
-        !function shitou() {
+        !function shitou(w) {
+            w.openGameFl = false;
+            // 打开游戏
+            w.openGame = function () {
+                // 调用时间
+                call()
+
+                // 调用石头动画
+                stoneFun();
+
+                // 调用小狗
+                dogMovement(gameDogImg);
+
+                // 生成情侣和金币
+                lovers();
+
+                // 显示游戏
+                $('.game').show();
+                dogTop = $('.gameDog').css('top').split('px')[0] * 1;
+                this.console.log(dogTop)
+            }
+
             var windwoWidth = document.body.clientWidth;
-            console.log(windwoWidth)
+            // console.log(windwoWidth)
             // $('#stoneGame .stoneImg').children('li').eq(0).addClass('animer')
             // 调用石头动画
             // stoneFun()
-            function stoneFun() {
-
+            function stoneFun(element) {
                 // 创建左右二边的石头
                 function fun_animer() {
                     var stoneLi = $('#stoneGame .stoneImg').children('li').eq(0).clone();
@@ -33,7 +53,8 @@
                 // 一上来创建石头
                 fun_animer();
                 // 循环调用石头
-                var time = setInterval(function () {
+                let time = setInterval(function () {
+                    if (w.openGameFl) clearInterval(time)
                     fun_animer()
                 }, 1000)
             }
@@ -43,8 +64,10 @@
             var gameDogImg = $('.gameDog img')
             // dogMovement(gameDogImg)
             function dogMovement(dom) {
-                let element = $('.time');
+
+
                 dom.time = setInterval(function () {
+                    if (w.openGameFl) clearInterval(dom.time)
                     var index = $('.gameDog img').attr('data-index');
                     if (index == 1) {
                         $('.gameDog img').attr('data-index', 0);
@@ -54,9 +77,7 @@
                         $('.gameDog img').attr('src', './img/dog_left.png')
                     }
 
-                    timeS(element, function () {
 
-                    })
                 }, 200)
             }
 
@@ -140,6 +161,7 @@
                             fun(num);
                         }, 30)
                         var time = setInterval(() => {
+                            if (w.openGameFl) clearInterval(time)
                             var index_top = top_user.css('top').split('px')[0] * 1;
                             // console.log(index_top, dogTop)
                             if (dogTop < index_top + 20 && dogTop > index_top - 20) {
@@ -161,6 +183,7 @@
                             fun()
                         }, 30)
                         var time = setInterval(() => {
+                            if (w.openGameFl) clearInterval(time)
                             var index_top = left_user.css('top').split('px')[0] * 1;
                             // console.log(index_top, dogTop)
                             if (dogTop < index_top - 40 && dogTop > index_top - 100) {
@@ -184,6 +207,7 @@
                             gold.addClass('animer');
                         }, 30);
                         var time = setInterval(() => {
+                            if (w.openGameFl) clearInterval(time)
                             var index_top = gold.css('top').split('px')[0] * 1;
                             // console.log(index_top, dogTop)
                             if (dogTop < index_top - 40 && dogTop > index_top - 100) {
@@ -207,6 +231,7 @@
                             gold.addClass('animer');
                         }, 30)
                         var time = setInterval(() => {
+                            if (w.openGameFl) clearInterval(time)
                             var index_top = gold.css('top').split('px')[0] * 1;
                             // console.log(index_top, dogTop)
                             if (dogTop < index_top - 40 && dogTop > index_top - 100) {
@@ -264,14 +289,14 @@
                     }
 
                 }
-                setInterval(() => {
+                let time = setInterval(() => {
+                    if (w.openGameFl) clearInterval(time)
                     random();
                 }, 800)
             }
 
             // 判断碰撞  num  1 站着的情侣  2躺着的情侣  3金币 4金砖  dom 碰撞的元素  row 排 站这的 0 1 2 躺着的 123
             function carsh(num, dom, row) {
-                // console.log(num,)
                 // 获取小狗现在的状态 1 左边 2 中间 3右边
                 var index = $('.gameDog').attr('data-index');
                 // 小狗跳起 1 跳起 否则 不跳起
@@ -344,36 +369,72 @@
             }
 
             // 定时间
+            function call() {
+                let time_element = $('.time');
+                let timeSTime = setInterval(() => {
+                    timeS(time_element, function () {
+                        clearInterval(timeSTime)
+                    })
+                }, 200)
+            }
 
             function timeS(element, fun) {
+
                 if (!element.time) element.time = new Date();
                 let time = new Date() - element.time;
                 time /= 1000;
                 // time
                 let texgt_time = (config.time - time).part(3)
                 element.text(texgt_time)
-                if (time >= config.time * 1000) {
-                    element.text(0)
+                if (time >= config.time) {
+                    element.text(0);
+                    // 游戏结束
+                    gameOver()
                     return fun();
                 }
 
             }
 
-            $('.game').hide();
-        }();
+        }(window);
 
 
         // 游戏结束
-        gameOver()
-        function gameOver(){
+        // gameOver()
+        function gameOver() {
+            // 展示显示的分数
             let grade = $('#grade').text();
-            $('.youraward .resuleArg').text(grade)
+            $('.youraward .resuleArg').text(grade);
+            openGameFl = true
             // 显示挑战成功
             $('.resuleBox').show();
         }
 
         // 打开排行榜
+
+        // 打开胶囊
+        let showRule = function (fl) {
+            if (fl) $('#poupInfoBox').addClass('enlarge')
+            else $('#poupInfoBox').removeClass('enlarge')
+        }
+        // 点击时间胶囊
+        $('#ruleImg').on('click', function () {
+            showRule(1);
+        })
+        // 关闭时间胶囊
+        $('.poupClose').on('click', function () {
+            showRule();
+        })
+        // 点击打开游戏
+        $('#startBtnImg').on('click', function () {
+            $('.body').hide();
+            // 打开游戏
+            openGame();
+        })
+
         
+
+        // openGameFl = true
+
     }
 
 
