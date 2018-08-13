@@ -10,6 +10,8 @@ var config = {};
         document.addEventListener('touchstart', stopScrolling, false);
         document.addEventListener('touchmove', stopScrolling, false);
     });
+
+    
     // 调用加载动画  true打开加载动画  否则关闭动画
     config.load = function (num) {
         // $('#preloadPage')

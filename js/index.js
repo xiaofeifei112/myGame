@@ -15,6 +15,7 @@
                 stoneFun();
 
                 // 调用小狗
+                gameDogImg = $('.gameDog img')
                 dogMovement(gameDogImg);
 
                 // 生成情侣和金币
@@ -23,9 +24,9 @@
                 // 显示游戏
                 $('.game').show();
                 dogTop = $('.gameDog').css('top').split('px')[0] * 1;
-                this.console.log(dogTop)
+                // this.console.log(dogTop)
             }
-
+            var gameDogImg = $('.gameDog img')
             var windwoWidth = document.body.clientWidth;
             // console.log(windwoWidth)
             // $('#stoneGame .stoneImg').children('li').eq(0).addClass('animer')
@@ -61,7 +62,7 @@
 
 
             // 小狗动画
-            var gameDogImg = $('.gameDog img')
+
             // dogMovement(gameDogImg)
             function dogMovement(dom) {
 
@@ -379,7 +380,6 @@
             }
 
             function timeS(element, fun) {
-
                 if (!element.time) element.time = new Date();
                 let time = new Date() - element.time;
                 time /= 1000;
@@ -430,8 +430,30 @@
             // 打开游戏
             openGame();
         })
+        // 点击再来一次
+        $('.resule-button').on('click', function () {
+            $('.body').show();
+            openGame();
+        })
+        // 点击查看排行榜
+        $('#resule_seeRank_show').on('click', function () {
 
-        
+        })
+
+        $('.poupTitleBox').on('click', '.poupTitleMune', function () {
+            // $('.poupTitleBox .poupTitleMune').removeClass('checked');
+            let left = $(this).attr('_flag');
+            if (left == 2) left = '.8rem', $('#popTabBox').css('left', '0');
+            else if (left == 1) left = '5.21667rem', $('#popTabBox').css('left', '-414px');
+            else left = '9.633rem', $('#popTabBox').css('left', '-828px')
+            $('.slideBarTip').css('left', left)
+        })
+
+        $('#resule_seeRank_show').on('click', function () {
+            showRule(1);
+            $('#popTabBox').css('left', '-414px');
+            $('.slideBarTip').css('left', '5.21667rem')
+        })
 
         // openGameFl = true
 
